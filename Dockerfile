@@ -3,7 +3,7 @@ FROM ubuntu:16.04
 MAINTAINER Abhishek Sharma
 
 RUN apt-get update \
-    && apt-get install -y python3 python3-dev gcc libpng-dev g++ python3-pip git sudo iptables vim
+    && apt-get install -y python3 python3-dev gcc libffi-dev libssl-dev libpng-dev g++ python3-pip git sudo iptables vim
 
 RUN apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common && \
     curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg > /tmp/dkey; apt-key add /tmp/dkey && \
@@ -16,7 +16,7 @@ RUN apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-
     && sudo groupadd docker ; exit 0 \
     && sudo usermod -aG docker root
 
-RUN pip3 install molecule docker
+RUN pip3 install molecule docker 
 
 
 CMD ["/bin/bash"]
